@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/info">Listado Info</a>
+            </li>
+          </ul>
+
+        </div>
+      </nav>
+
+      <div class="container mt-3">
+
+        <%- include('./styles/vista')-%>
+
+            <div class="jumbotron-fluid">
+                <h1>Listado Procesos</h1>
+                <br>
+
+                <% if(hayInfo){ %>
+                    <div class="table-responsive">
+                        <table class="table table-dark">
+                            <tr>
+                              <th>Argumentos de entrada</th>
+                              <th>Path de ejecución</th>
+                              <th>Nombre de la plataforma</th>
+                              <th>Process ID</th>
+                              <th>Version de Node</th>
+                              <th>Carpeta del proyecto</th>
+                              <th>Memoria total reservada</th>
+                            </tr>
+                            <%informacion.forEach(function(info) {%>
+                                <tr>
+                                    <td><%=info.argumentos%></td>
+                                    <td><%=info.nombre%></td>
+                                    <td><%=info.version%></td>
+                                    <td><%=info.memoria%></td>
+                                    <td><%=info.path%></td>
+                                    <td><%=info.process%></td>
+                                    <td><%=info.carpeta%></td>
+                                </tr>
+                                <%});%>
+                        </table>
+                    </div>
+                    <% } else{ %>
+                        <h3 class="alert alert-warning">Registro no encontrado</h3>
+                        <% } %>
+
+                            <br>
+                            <a href="/home" type="button" class="btn btn-primary">Regresar al Home</a>
+
+            </div>
+    </div>
+
+    <!-- <div class="jumbotron">
+        <h1>Listado Procesos</h1>
+        <br>
+        <div class="table-responsive"> -->
+            <!-- <table class="table table-dark">
+                <tr>
+                    <th>Argumentos de entrada</th>
+                    <th>Path de ejecución</th>
+                    <th>Nombre de la plataforma</th>
+                    <th>Process ID</th>
+                    <th>Version de Node</th>
+                    <th>Carpeta del proyecto</th>
+                    <th>Memoria total reservada</th>
+                </tr>
+                <tr>
+                    {info.map
+
+                    }
+                    <td>{this.argumentos}</td>
+                    <td>{this.nombre}</td>
+                    <td>{this.version}</td>
+                    <td>{this.memoria}</td>
+                    <td>{this.path}</td>
+                    <td>{this.process}</td>
+                    <td>{this.carpeta}</td>
+                </tr>
+            </table> -->
+        <!-- </div>
+    </div> -->
+</body>
+</html>
